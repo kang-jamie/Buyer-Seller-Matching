@@ -1,0 +1,6 @@
+# Do not track the following files
+draft.py
+test.py
+test2.py
+mechanism_test.py
+
