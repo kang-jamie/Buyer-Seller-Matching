@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 
 import traders
 import mechanism as mech
+import pandas as pd
 
 def MC_main(a_rate,d_rate,d,T):
     M_num_batch = 0
@@ -93,21 +94,23 @@ d_rate = 2
 d = 1
 T = 250
 
-kk=10
-results = np.empty([kk,6])
+# kk=10
 
-for k in range(kk):
-    print("k:",k)
-    # a_rate = 5*(k+1)
-    d = k/2+0.5
-    # d_rate = 0.2*k
-    results[k,0], results[k,1], results[k,2], results[k,3], results[k,4], results[k,5] = MC_main(a_rate,d_rate,d,T)
-print(results)
+kk = np.linspace(0,10,50)
+results = np.empty([len(kk),6])
+print(len(kk))
+for i in range(len(kk)):
+    print("i:",i)
+    d = kk[i]/2+0.5
+    results[i,:] = MC_main(a_rate,d_rate,d,T)   
 
-print(results[:,1]/results[:,3])
+W_b = pd.Series(results[:,1])
+W_o = pd.Series(results[:,3])
+W_g = pd.Series(results[:,5])
 
-plt.plot(range(kk),results[:,1])
-plt.plot(range(kk),results[:,3])
-plt.plot(range(kk),results[:,5])
+plt.plot(kk,W_b.rolling(5).mean())
+plt.plot(kk,W_o.rolling(5).mean())
+plt.plot(kk,W_g.rolling(5).mean())
 plt.legend(['Batch', 'Online', 'Greedy'], loc='upper left')
 plt.show()
+
