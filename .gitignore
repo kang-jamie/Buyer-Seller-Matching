@@ -6,3 +6,5 @@ mechanism_test.py
 bmm_draft.py
 test3.py
 __pycache__/
+main-jupyter.ipynb
+.ipynb_checkpoints/

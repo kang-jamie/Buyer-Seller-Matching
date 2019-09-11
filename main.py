@@ -1,4 +1,6 @@
 import numpy as np
+import matplotlib
+matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 
 import traders
@@ -87,7 +89,7 @@ def MC_main(a_rate,d_rate,d,T):
 price_low = 80
 price_high = 120
 
-r = 1.265557
+r = 1.265557 #computed from Mathematica
 
 a_rate = 5
 d_rate = 2
@@ -96,7 +98,8 @@ T = 250
 
 # kk=10
 
-kk = np.linspace(0,10,50)
+# kk = np.linspace(0,10,50)
+kk = np.linspace(0,29,58)
 results = np.empty([len(kk),6])
 print(len(kk))
 for i in range(len(kk)):
@@ -108,6 +111,8 @@ W_b = pd.Series(results[:,1])
 W_o = pd.Series(results[:,3])
 W_g = pd.Series(results[:,5])
 
+file_name = "a" + str(a_rate) + "_" + "d" + str(d_rate) + "_" + "T" + str(T)
+np.savetxt('Results/'+file_name + '.csv', results, delimiter=",")
 plt.plot(kk,W_b.rolling(5).mean())
 plt.plot(kk,W_o.rolling(5).mean())
 plt.plot(kk,W_g.rolling(5).mean())
