@@ -1,10 +1,7 @@
 ### mechanism.py
-# This class uses two different methods (OP and BMM) to allocate items
+# This class uses four different mechanisms to allocate items
 # in the double auction for given bids and asks
 # 
-#
-# This class uses MOSEK solver. Need to install mosek.fusion
-# (https://docs.mosek.com/8.1/pythonfusion/install-interface.html)
 #
 
 
