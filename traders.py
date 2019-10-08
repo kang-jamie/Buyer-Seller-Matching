@@ -64,8 +64,8 @@ class Trader(object):
         self.arrival = np.asarray(self.arrival)
 
     def simulate_departure(self):
-        self.depart = self.arrival + self.d + np.random.exponential(scale = 1/self.depart_rate, size=self.total_num)
-        # self.depart = self.arrival + self.d + np.random.uniform(low = 0, high = self.depart_rate*2, size=self.total_num)
+        # self.depart = self.arrival + self.d + np.random.exponential(scale = 1/self.depart_rate, size=self.total_num)
+        self.depart = self.arrival + self.d + np.random.uniform(low = 0, high = self.depart_rate*2, size=self.total_num)
 
     def simulate_value(self):
         """
